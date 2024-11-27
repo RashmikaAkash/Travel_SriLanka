@@ -1,5 +1,5 @@
 # Travel_SriLanka
-Sri Lanka Travel WebSite
+TravelSriLanka.com is a comprehensive web platform designed to showcase the beauty and diversity of Sri Lanka. This website serves as a guide for travelers, providing detailed information on popular destinations, cultural experiences, accommodations, and activities across the island. It aims to make planning a trip to Sri Lanka seamless and enjoyable for both local and international tourists.
 
 # TravelSriLanka.com
 
