@@ -25,7 +25,7 @@ function Header() {
                             <a class="nav-link" href="/destination">Destinations</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href=" ">Gallery</a>
+                            <a class="nav-link" href="/gallery">Gallery</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href=" ">Bookings</a>

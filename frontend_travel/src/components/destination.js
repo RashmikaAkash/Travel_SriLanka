@@ -30,8 +30,17 @@ import Haputale from "../assets/Haputale.png";
 import Wilpattu from "../assets/Wilpattu National Park.png";
 import Pigeon from "../assets/Pigeon Island National Park.png";
 import Delft from "../assets/Delft Island.png";
+import info from "../assets/Info.jpg";
+import info2 from "../assets/info2.jpg";
+import info3 from "../assets/info3.jpg";
+import info4 from "../assets/info4.jpg";
+
+
 
 function Destination() {
+    const imagess = [info,info2,info3,info4,];
+
+        
     const [currentImage, setCurrentImage] = useState(0);
     const [selectedPlace, setSelectedPlace] = useState(null); // State to track selected place
 
@@ -45,7 +54,7 @@ function Destination() {
             image: Delft,
             coordinates: [9.5203, 79.6595],
         },
-        
+
         {
             name: "Pigeon Island National Park",
             description:
@@ -194,9 +203,19 @@ function Destination() {
             image: Udawalawe,
             coordinates: [6.4757, 80.8891],
         },
-    
-    
+
+
     ];
+
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentImageIndex((prevIndex) => (prevIndex + 1) % imagess.length);
+        }, 3000);
+
+        return () => clearInterval(interval); // Clean up on component unmount
+    }, [imagess.length]);
 
     const nextImage = () => {
         setCurrentImage((prevImage) => (prevImage + 1) % images.length);
@@ -299,7 +318,7 @@ function Destination() {
                 </button>
             </div>
 
-            
+
             <div
                 style={{
                     display: "flex",
@@ -321,37 +340,45 @@ function Destination() {
                         boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
                         textAlign: 'center',
                         padding: '30px',
-                        height: '900px'
+                        height: 'auto',
                     }}
                 >
-                    <h1 style={{
-                        fontSize: '2.5rem',
-                        color: '#333',
-                        marginBottom: '10px'
-                    }}>
+                    <h1
+                        style={{
+                            fontSize: '2.5rem',
+                            color: '#333',
+                            marginBottom: '10px',
+                        }}
+                    >
                         ආයුබෝවන් !
                     </h1>
-                    <h3 style={{
-                        fontSize: '1.5rem',
-                        color: '#555',
-                        margin: '5px 0'
-                    }}>
+                    <h3
+                        style={{
+                            fontSize: '1.5rem',
+                            color: '#555',
+                            margin: '5px 0',
+                        }}
+                    >
                         WELCOME TO DESTINATION SRI LANKA
                     </h3>
-                    <h3 style={{
-                        fontSize: '1.5rem',
-                        color: '#555',
-                        margin: '5px 0'
-                    }}>
+                    <h3
+                        style={{
+                            fontSize: '1.5rem',
+                            color: '#555',
+                            margin: '5px 0',
+                        }}
+                    >
                         இலக்கு இலங்கைக்கு வரவேற்கிறோம்
                     </h3>
-                    <div style={{
-                        marginTop: '40px',
-                        lineHeight: '1.8',
-                        color: '#666',
-                        textAlign: 'justify',
-                        fontSize: '16px',
-                    }}>
+                    <div
+                        style={{
+                            marginTop: '40px',
+                            lineHeight: '1.8',
+                            color: '#666',
+                            textAlign: 'justify',
+                            fontSize: '16px',
+                        }}
+                    >
                         <p>
                             Embark on an extraordinary journey to the Pearl of the Indian Ocean, a land of timeless beauty, rich culture, and unparalleled charm. Sri Lanka, with its diverse landscapes and vibrant traditions, offers an experience like no other.
                         </p>
@@ -367,11 +394,51 @@ function Destination() {
                         <p style={{ marginTop: '15px' }}>
                             Whether you’re seeking relaxation, adventure, cultural exploration, or spiritual awakening, Destination Sri Lanka is your gateway to unforgettable memories. Let the magic of this island paradise captivate your heart and inspire your soul.
                         </p>
-                        <p style={{ marginTop: '15px', fontWeight: 'bold', textAlign: 'center', color: '#444' }}>
+                        <p
+                            style={{
+                                marginTop: '15px',
+                                fontWeight: 'bold',
+                                textAlign: 'center',
+                                color: '#444',
+                            }}
+                        >
                             Your adventure begins here. Welcome to Sri Lanka! 🌴✨
                         </p>
                     </div>
+                    <div
+                style={{
+                    marginTop: '30px',
+                    borderRadius: '10px',
+                    overflow: 'hidden',
+                    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+                }}
+            >
+                <img
+                    src={imagess[currentImageIndex]}
+                    alt="Beautiful Sri Lanka"
+                    style={{
+                        width: '100%',
+                        height: 'auto',
+                        display: 'block',
+                    }}
+                />
+                <div
+                    style={{
+                        padding: '20px',
+                        background: '#fff',
+                        textAlign: 'center',
+                    }}
+                >
+                    <h3 style={{ fontSize: '1.3rem', color: '#333', margin: '10px 0' }}>
+                        Discover the Beauty of Sri Lanka
+                    </h3>
+                    <p style={{ fontSize: '14px', color: '#666' }}>
+                        From scenic beaches to lush greenery, let your journey begin.
+                    </p>
                 </div>
+            </div>
+                </div>
+
 
                 {/* Map Section */}
                 <div style={{ flex: 1, width: '40%', marginLeft: '50px', marginTop: '50px', marginRight: '0px' }}>
@@ -409,13 +476,15 @@ function Destination() {
                     </MapContainer>
 
                     {selectedPlace && (
-                        <div style={{ marginTop: '20px', padding: '20px', backgroundColor: '#f8f9fa', borderRadius: '10px' , lineHeight: '1.8',
+                        <div style={{
+                            marginTop: '20px', padding: '20px', backgroundColor: '#f8f9fa', borderRadius: '10px', lineHeight: '1.8',
                             color: '#666',
                             textAlign: 'justify',
-                            fontSize: '16px',boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',}}>
+                            fontSize: '16px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+                        }}>
                             <h3>{selectedPlace.name}</h3>
                             <p>{selectedPlace.description}</p>
-                            <br/>
+                            <br />
                             <img
                                 src={selectedPlace.image}
                                 alt={selectedPlace.name}
