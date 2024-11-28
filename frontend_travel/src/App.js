@@ -5,6 +5,7 @@ import Header from './components/header';
 import Home from './components/Home';
 import Destination from './components/destination';
 import Gallery from './components/Gallery';
+import Booking from './components/Booking';
 import 'leaflet/dist/leaflet.css';
 
 
@@ -19,6 +20,7 @@ function App() {
           <Route path="/" exact Component={Home} />
           <Route path="/destination" exact Component={Destination} />
           <Route path="/gallery" exact Component={Gallery} />
+          <Route path="/booking" exact Component={Booking} />
         </Routes>
       </div>
     </Router>
