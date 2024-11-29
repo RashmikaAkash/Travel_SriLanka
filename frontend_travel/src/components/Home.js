@@ -6,6 +6,7 @@ import card3 from "../assets/c3.jpg";
 import card4 from "../assets/c4.jpg";
 import card5 from "../assets/c5.jpg";
 import Article from "../assets/Article.jpg";
+import Header from 'C:/Users/rashm/OneDrive/Desktop/Travel_SriLanka/frontend_travel/src/components/header';
 
 function Home() {
   const [amount, setAmount] = useState("");
@@ -21,8 +22,10 @@ function Home() {
   };
 
   return (
+    
     <div>
       {/* Banner Section */}
+      <Header />
       <div
         style={{
           position: "relative",

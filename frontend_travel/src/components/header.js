@@ -31,7 +31,7 @@ function Header() {
                             <a class="nav-link" href="/booking">Bookings</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href=" ">Explore Sri Lanka</a>
+                            <a class="nav-link" href="/explore">Explore Sri Lanka</a>
                         </li>
                     </ul>
                 </div>
