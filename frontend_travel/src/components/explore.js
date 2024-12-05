@@ -1,46 +1,112 @@
-import React, { useState } from 'react';
-// Fix the import for the background image
+import React, { useState, useEffect } from 'react';
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'; // Import OrbitControls
 import back from '../assets/eback.jpg';
-import Header from 'C:/Users/rashm/OneDrive/Desktop/Travel_SriLanka/frontend_travel/src/components/header';
+import Header from '../components/header'; // Adjust the path to your Header component
 
 function Explore() {
     const [hoveredSection, setHoveredSection] = useState(null); // Track hovered section
 
-    // Container for the whole page
-    const containerStyle = {
-        maxWidth: '1200px',
-        margin: '0 auto',
-        padding: '20px',
-        fontFamily: 'Arial, sans-serif',
-    };
+    useEffect(() => {
+        // Select the container for Three.js
+        const container = document.getElementById('three-container');
 
-    // Header styles
-    const headerStyle = {
-        textAlign: 'center',
-        padding: '80px 20px', // Increased padding for better spacing
-        backgroundImage: `url(${back})`, // Use background image URL correctly
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        color: 'white',
-        borderRadius: '8px',
-        marginBottom: '30px',
-        boxShadow: '0 4px 10px rgba(0, 0, 0, 0.2)',
-        position: 'relative',
-        textShadow: '2px 2px 4px rgba(0, 0, 0, 0.6)',
-    };
+        // Create a Three.js Scene
+        const scene = new THREE.Scene();
 
-    const headerTitleStyle = {
-        fontSize: '3.5rem',
-        margin: '0',
-        animation: 'fadeIn 1s ease-out',
-        zIndex: 2,
-    };
+        // Set up the Camera
+        const camera = new THREE.PerspectiveCamera(
+            75,
+            container.offsetWidth / container.offsetHeight,
+            0.1,
+            1000
+        );
+        camera.position.set(0, 2, 39);
 
-    const headerSubtitleStyle = {
-        fontSize: '1.6rem',
-        marginTop: '10px',
-        zIndex: 2,
-    };
+        // Create a Renderer
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(container.offsetWidth, container.offsetHeight);
+        renderer.setClearColor(0xffffff, 1); // Set background color to white
+        container.appendChild(renderer.domElement);
+
+        // Add Lighting
+        const light = new THREE.DirectionalLight(0xffffff, 6); // Increased intensity to 6
+        light.position.set(1, 5, 7.5);
+        scene.add(light);
+
+        const ambientLight = new THREE.AmbientLight(0x404040, 4); // Increased intensity to 4
+        scene.add(ambientLight);
+
+        // Additional light for extra brightness from different angles
+        const pointLight1 = new THREE.PointLight(0xffffff, 4, 100); // Increased intensity to 4
+        pointLight1.position.set(10, 5, 10); // Light from above
+        scene.add(pointLight1);
+
+        const pointLight2 = new THREE.PointLight(0xffffff, 4, 100); // Increased intensity to 4
+        pointLight2.position.set(10, -5, 10); // Light from below
+        scene.add(pointLight2);
+
+        const pointLight3 = new THREE.PointLight(0xffffff, 4, 100); // Increased intensity to 4
+        pointLight3.position.set(10, 0, 10); // Light from the right
+        scene.add(pointLight3);
+
+        const pointLight4 = new THREE.PointLight(0xffffff, 4, 100); // Increased intensity to 4
+        pointLight4.position.set(-10, 0, 10); // Light from the left
+        scene.add(pointLight4);
+
+        // Hemisphere Light to brighten from all angles
+        const hemisphereLight = new THREE.HemisphereLight(0xffffff, 0x404040, 3); // Increased intensity to 3
+        scene.add(hemisphereLight);
+
+        // Load Elephant Model
+        const loader = new GLTFLoader();
+        loader.load(
+            '/models/elephant_cycle.glb', // Path to your public/models directory
+            (gltf) => {
+                const elephant = gltf.scene;
+                elephant.scale.set(5, 5, -5); // Adjust the scale as needed
+                elephant.position.set(0, -10, 0); // Move the elephant down to avoid floating above
+                scene.add(elephant);
+            },
+            undefined,
+            (error) => {
+                console.error('An error occurred while loading the model:', error);
+            }
+        );
+
+        // Create OrbitControls for mouse interaction
+        const controls = new OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true; // Smooths camera movement
+        controls.dampingFactor = 0.25;
+        controls.screenSpacePanning = false;
+        controls.maxPolarAngle = Math.PI / 2; // Prevents the camera from going below the scene
+        controls.minPolarAngle = Math.PI / 2; // Prevents the camera from moving above the scene
+
+        // Update the camera aspect ratio when the window is resized
+        const onResize = () => {
+            camera.aspect = container.offsetWidth / container.offsetHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(container.offsetWidth, container.offsetHeight);
+        };
+
+        window.addEventListener('resize', onResize);
+
+        // Animation Loop
+        const animate = () => {
+            requestAnimationFrame(animate);
+            controls.update(); // Only required if controls.enableDamping = true, or if controls.auto-rotation is enabled
+            renderer.render(scene, camera);
+        };
+
+        animate();
+
+        // Cleanup on unmount
+        return () => {
+            window.removeEventListener('resize', onResize);
+            container.removeChild(renderer.domElement);
+        };
+    }, []);
 
     // Content Grid Layout Styles
     const contentStyle = {
@@ -48,6 +114,9 @@ function Explore() {
         gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
         gap: '20px',
         padding: '10px',
+        maxWidth: '1200px'
+        , margin: '0 auto',
+        marginTop: '0p'
     };
 
     // Section card styles with hover effect
@@ -62,6 +131,15 @@ function Explore() {
         boxShadow: hovered ? '0 8px 20px rgba(0, 0, 0, 0.2)' : '0 4px 6px rgba(0, 0, 0, 0.1)', // Handle hover state dynamically
         backgroundColor: hovered ? '#f1f1f1' : 'white', // Handle hover state dynamically
     });
+
+    // Handle mouse hover effect for sections
+    const handleMouseEnter = (section) => {
+        setHoveredSection(section);
+    };
+
+    const handleMouseLeave = () => {
+        setHoveredSection(null);
+    };
 
     // Section heading and description styles
     const sectionTitleStyle = {
@@ -91,8 +169,8 @@ function Explore() {
         lineHeight: '1.6',
     };
 
-    // Button styles
-    const buttonStyle = {
+     // Button styles
+     const buttonStyle = {
         display: 'inline-block',
         marginTop: '10px',
         padding: '10px 20px',
@@ -106,27 +184,34 @@ function Explore() {
         transition: 'background-color 0.3s ease',
     };
 
-    // Handle mouse hover effect for sections
-    const handleMouseEnter = (section) => {
-        setHoveredSection(section);
-    };
-
-    const handleMouseLeave = () => {
-        setHoveredSection(null);
-    };
-
     return (
         <div>
             <Header />
-            <div style={containerStyle}>
-                <header style={headerStyle}>
-                    <h1 style={headerTitleStyle}>Explore Sri Lanka</h1>
-                    <p style={headerSubtitleStyle}>
+            <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '20px' }}>
+                <header
+                    style={{
+                        textAlign: 'center',
+                        padding: '80px 20px',
+                        backgroundImage: `url(${back})`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                        color: 'white',
+                        borderRadius: '8px',
+                        marginBottom: '30px',
+                        boxShadow: '0 4px 10px rgba(0, 0, 0, 0.2)',
+                        textShadow: '2px 2px 4px rgba(0, 0, 0, 0.6)',
+                    }}
+                >
+                    <h1 style={{ fontSize: '3.5rem', margin: '0' }}>Explore Sri Lanka</h1>
+                    <p style={{ fontSize: '1.6rem', marginTop: '10px' }}>
                         Uncover the beauty, culture, and thrilling adventures of Sri Lanka.
                     </p>
                 </header>
+            </div>
+            {/* 3D Animation Container */}
+            <div id="three-container" style={{ height: '80vh', width: '100%' }}></div>
 
-                <div style={contentStyle}>
+            <div style={contentStyle}>
                     {/* Natural Beauty Section */}
                     <section
                         style={sectionStyle(hoveredSection === 'naturalBeauty')}
@@ -204,7 +289,6 @@ function Explore() {
                         </a>
                     </section>
                 </div>
-            </div>
         </div>
     );
 }
