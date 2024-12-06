@@ -6,6 +6,7 @@ import Destination from './components/destination';
 import Gallery from './components/Gallery';
 import Booking from './components/Booking';
 import explore from './components/explore';
+import naturalbeauty from './components/Naturalbeauty';
 import 'leaflet/dist/leaflet.css';
 
 
@@ -22,6 +23,7 @@ function App() {
           <Route path="/gallery" exact Component={Gallery} />
           <Route path="/booking" exact Component={Booking} />
           <Route path="/explore" exact Component={explore} />
+          <Route path="/naturalbeauty" exact Component={naturalbeauty} />
         </Routes>
       </div>
     </Router>

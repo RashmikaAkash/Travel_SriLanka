@@ -22,7 +22,7 @@ function Explore() {
             0.1,
             1000
         );
-        camera.position.set(0, 2, 39);
+        camera.position.set(20, 2, 31);
 
         // Create a Renderer
         const renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -116,7 +116,11 @@ function Explore() {
         padding: '10px',
         maxWidth: '1200px'
         , margin: '0 auto',
-        marginTop: '0p'
+        marginTop: '10px',
+        marginBottom: '40px',
+
+
+
     };
 
     // Section card styles with hover effect
@@ -169,8 +173,8 @@ function Explore() {
         lineHeight: '1.6',
     };
 
-     // Button styles
-     const buttonStyle = {
+    // Button styles
+    const buttonStyle = {
         display: 'inline-block',
         marginTop: '10px',
         padding: '10px 20px',
@@ -197,7 +201,7 @@ function Explore() {
                         backgroundPosition: 'center',
                         color: 'white',
                         borderRadius: '8px',
-                        marginBottom: '30px',
+                        marginBottom: '10px',
                         boxShadow: '0 4px 10px rgba(0, 0, 0, 0.2)',
                         textShadow: '2px 2px 4px rgba(0, 0, 0, 0.6)',
                     }}
@@ -208,87 +212,139 @@ function Explore() {
                     </p>
                 </header>
             </div>
-            {/* 3D Animation Container */}
-            <div id="three-container" style={{ height: '80vh', width: '100%' }}></div>
+
+            <div style={{
+                height: '80vh',
+            
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                marginTop: '10px',
+                //display: "flex",
+                //justifyContent: "space-between",
+                //flexWrap: "wrap",
+                //margin: "50px auto",
+                //width: "98%",
+                maxWidth: "1900px",
+            }}>
+                {/* 3D Animation Container */}
+                <div id="three-container" style={{
+                    height: '80vh',
+                    width: '50%',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                }}></div>
+
+                <div style={{
+                    width: '50%',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    border: "1px solid #ddd",
+                    borderRadius: "10px",
+                    backgroundColor: "#fff",
+                    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+                    transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                    cursor: "pointer",
+                    color: "black",
+                    padding: "40px",
+                    marginRight: '50px',
+                }}>
+
+                    <>
+                        <strong>Elephants hold significant cultural and religious value in Sri Lanka. They are deeply revered in both Buddhist traditions and local customs, symbolizing strength, wisdom, and grace. Here are some key aspects of their cultural value:</strong><br /><br></br>
+                        <ol>
+                            <li>Religious Significance: Elephants are associated with Buddhism in Sri Lanka, particularly in the context of the country's most sacred relic, the Tooth Relic of the Buddha, which is housed in the Temple of the Tooth (Sri Dalada Maligawa) in Kandy. Elephants play a key role in the annual Kandy Esala Perahera, a grand religious procession. The elephants carry the sacred relic in the parade, and their presence is believed to bring blessings to the people.</li>
+
+                            <li>Conservation and Preservation: Sri Lanka is home to a significant population of wild elephants, and there are various cultural and national efforts to protect them. <strong>The Sri Lankan elephant</strong> (Elephas maximus maximus) is considered an endangered species, and conservation projects often involve local communities, with a cultural focus on preserving their traditional role in Sri Lankan life.</li>
+
+                        </ol>
+                        <h6>Their cultural presence is revered and protected, with many Sri Lankans viewing elephants as sacred beings with deep spiritual significance.</h6>
+
+                    </>
+                </div>
+
+
+            </div>
 
             <div style={contentStyle}>
-                    {/* Natural Beauty Section */}
-                    <section
-                        style={sectionStyle(hoveredSection === 'naturalBeauty')}
-                        onMouseEnter={() => handleMouseEnter('naturalBeauty')}
-                        onMouseLeave={handleMouseLeave}
+                {/* Natural Beauty Section */}
+                <section
+                    style={sectionStyle(hoveredSection === 'naturalBeauty')}
+                    onMouseEnter={() => handleMouseEnter('naturalBeauty')}
+                    onMouseLeave={handleMouseLeave}
+                >
+                    <h2 style={sectionTitleStyle}>🌴 Natural Beauty</h2>
+                    <p style={sectionDescriptionStyle}>
+                        Immerse yourself in the pristine beaches, lush mountains, and mesmerizing waterfalls of Sri Lanka.
+                    </p>
+                    <ul style={ulStyle}>
+                        <li style={liStyle}>Beaches: Unawatuna, Arugam Bay, Mirissa</li>
+                        <li style={liStyle}>Mountains: Ella, Nuwara Eliya, Haputale</li>
+                        <li style={liStyle}>Waterfalls: Bambarakanda, Dunhinda</li>
+                        <li style={liStyle}>National Parks: Yala, Udawalawe</li>
+                        <li style={liStyle}>Rainforests: Sinharaja Forest</li>
+                    </ul>
+                    <a
+                        href="/naturalbeauty"
+                        style={buttonStyle}
+                        aria-label="Learn more about natural beauty"
                     >
-                        <h2 style={sectionTitleStyle}>🌴 Natural Beauty</h2>
-                        <p style={sectionDescriptionStyle}>
-                            Immerse yourself in the pristine beaches, lush mountains, and mesmerizing waterfalls of Sri Lanka.
-                        </p>
-                        <ul style={ulStyle}>
-                            <li style={liStyle}>Beaches: Unawatuna, Arugam Bay, Mirissa</li>
-                            <li style={liStyle}>Mountains: Ella, Nuwara Eliya, Haputale</li>
-                            <li style={liStyle}>Waterfalls: Bambarakanda, Dunhinda</li>
-                            <li style={liStyle}>National Parks: Yala, Udawalawe</li>
-                            <li style={liStyle}>Rainforests: Sinharaja Forest</li>
-                        </ul>
-                        <a
-                            href=" "
-                            style={buttonStyle}
-                            aria-label="Learn more about natural beauty"
-                        >
-                            Learn More
-                        </a>
-                    </section>
+                        Learn More
+                    </a>
+                </section>
 
-                    {/* Cultural Heritage Section */}
-                    <section
-                        style={sectionStyle(hoveredSection === 'culturalHeritage')}
-                        onMouseEnter={() => handleMouseEnter('culturalHeritage')}
-                        onMouseLeave={handleMouseLeave}
+                {/* Cultural Heritage Section */}
+                <section
+                    style={sectionStyle(hoveredSection === 'culturalHeritage')}
+                    onMouseEnter={() => handleMouseEnter('culturalHeritage')}
+                    onMouseLeave={handleMouseLeave}
+                >
+                    <h2 style={sectionTitleStyle}>🏛️ Cultural Heritage</h2>
+                    <p style={sectionDescriptionStyle}>
+                        Discover the rich history and traditions through ancient cities, temples, and cultural festivals.
+                    </p>
+                    <ul style={ulStyle}>
+                        <li style={liStyle}>Ancient Cities: Anuradhapura, Polonnaruwa</li>
+                        <li style={liStyle}>Temples: Sacred Tooth Relic, Dambulla</li>
+                        <li style={liStyle}>Colonial Heritage: Galle Fort</li>
+                        <li style={liStyle}>Festivals: Kandy Perahera</li>
+                    </ul>
+                    <a
+                        href=" "
+                        style={buttonStyle}
+                        aria-label="Learn more about cultural heritage"
                     >
-                        <h2 style={sectionTitleStyle}>🏛️ Cultural Heritage</h2>
-                        <p style={sectionDescriptionStyle}>
-                            Discover the rich history and traditions through ancient cities, temples, and cultural festivals.
-                        </p>
-                        <ul style={ulStyle}>
-                            <li style={liStyle}>Ancient Cities: Anuradhapura, Polonnaruwa</li>
-                            <li style={liStyle}>Temples: Sacred Tooth Relic, Dambulla</li>
-                            <li style={liStyle}>Colonial Heritage: Galle Fort</li>
-                            <li style={liStyle}>Festivals: Kandy Perahera</li>
-                        </ul>
-                        <a
-                            href=" "
-                            style={buttonStyle}
-                            aria-label="Learn more about cultural heritage"
-                        >
-                            Learn More
-                        </a>
-                    </section>
+                        Learn More
+                    </a>
+                </section>
 
-                    {/* Wildlife & Adventure Section */}
-                    <section
-                        style={sectionStyle(hoveredSection === 'wildlifeAdventure')}
-                        onMouseEnter={() => handleMouseEnter('wildlifeAdventure')}
-                        onMouseLeave={handleMouseLeave}
+                {/* Wildlife & Adventure Section */}
+                <section
+                    style={sectionStyle(hoveredSection === 'wildlifeAdventure')}
+                    onMouseEnter={() => handleMouseEnter('wildlifeAdventure')}
+                    onMouseLeave={handleMouseLeave}
+                >
+                    <h2 style={sectionTitleStyle}>🐘 Wildlife and Adventure</h2>
+                    <p style={sectionDescriptionStyle}>
+                        Experience thrilling safaris, breathtaking hikes, and adventures in nature's lap.
+                    </p>
+                    <ul style={ulStyle}>
+                        <li style={liStyle}>Wildlife: Leopards in Yala, Elephants in Minneriya</li>
+                        <li style={liStyle}>Whale Watching: Mirissa, Trincomalee</li>
+                        <li style={liStyle}>Bird Watching: Bundala National Park</li>
+                        <li style={liStyle}>Hiking: Adam's Peak, Knuckles Range</li>
+                        <li style={liStyle}>Water Sports: Surfing, Scuba Diving</li>
+                    </ul>
+                    <a
+                        href=" "
+                        style={buttonStyle}
+                        aria-label="Learn more about wildlife and adventure"
                     >
-                        <h2 style={sectionTitleStyle}>🐘 Wildlife and Adventure</h2>
-                        <p style={sectionDescriptionStyle}>
-                            Experience thrilling safaris, breathtaking hikes, and adventures in nature's lap.
-                        </p>
-                        <ul style={ulStyle}>
-                            <li style={liStyle}>Wildlife: Leopards in Yala, Elephants in Minneriya</li>
-                            <li style={liStyle}>Whale Watching: Mirissa, Trincomalee</li>
-                            <li style={liStyle}>Bird Watching: Bundala National Park</li>
-                            <li style={liStyle}>Hiking: Adam's Peak, Knuckles Range</li>
-                            <li style={liStyle}>Water Sports: Surfing, Scuba Diving</li>
-                        </ul>
-                        <a
-                            href=" "
-                            style={buttonStyle}
-                            aria-label="Learn more about wildlife and adventure"
-                        >
-                            Learn More
-                        </a>
-                    </section>
-                </div>
+                        Learn More
+                    </a>
+                </section>
+            </div>
         </div>
     );
 }
