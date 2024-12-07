@@ -19,9 +19,9 @@ mongoose.connect(URL)
     .then(() => console.log("Mongodb Connection success!"))
     .catch((err) => console.error("Mongodb connection error:", err));
 
-const userRouter = require("./routes/users");
+const userRouter = require("./routes/hotels");
 
-app.use("/users", userRouter);
+app.use("/hotel", userRouter);
 
 app.listen(PORT, () => {
     console.log(`Server is up and running on port number: ${PORT}`);

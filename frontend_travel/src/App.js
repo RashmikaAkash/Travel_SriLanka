@@ -7,6 +7,9 @@ import Gallery from './components/Gallery';
 import Booking from './components/Booking';
 import explore from './components/explore';
 import naturalbeauty from './components/Naturalbeauty';
+import HotelBooking from './components/hotelbooking';
+import Addhotels from './components/Admin/Addhotels';
+
 import 'leaflet/dist/leaflet.css';
 
 
@@ -24,6 +27,9 @@ function App() {
           <Route path="/booking" exact Component={Booking} />
           <Route path="/explore" exact Component={explore} />
           <Route path="/naturalbeauty" exact Component={naturalbeauty} />
+          <Route path="/hotelbooking" exact Component={HotelBooking} />
+          <Route path="/addhotels" exact Component={Addhotels} />
+        
         </Routes>
       </div>
     </Router>

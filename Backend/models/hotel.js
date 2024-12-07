@@ -2,26 +2,18 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 // Define the schema
-const userSchema = new Schema({
+const hotelSchema = new Schema({
 
     uid: {
         type: String,
         required: true,
     },
-    Fname: {
+    hotelname: {
         type: String,
         required: true,
     },
-    Lname: {
+    description: {
         type: String,
-        required: true,
-    },
-    Gender: {
-        type: String,
-        required: true,
-    },
-    age: {
-        type: Number,
         required: true,
     },
     Email: {
@@ -43,5 +35,5 @@ const userSchema = new Schema({
 });
 
 // Create and export the model
-const User = mongoose.model("User", userSchema);
-module.exports = User;
+const Hotel = mongoose.model("Hotel", hotelSchema);
+module.exports = Hotel;

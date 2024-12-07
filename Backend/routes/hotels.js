@@ -1,18 +1,16 @@
 const express = require("express");
 const router = express.Router();
-const user = require("../models/user"); // Ensure this path is correct
+const hotel = require("../models/hotel"); // Ensure this path is correct
 
 // Import the User model
 // Add a new User
 router.post("/add", async (req, res) => {
-    const { uid, Fname, Lname, Gender, age,  Email,  ContactNum, Address, City } = req.body;
+    const { uid, hotelname,description,   Email,  ContactNum, Address, City } = req.body;
 
-    const newUser = new user({
+    const newUser = new hotel({
         uid,
-        Fname,
-        Lname,
-        Gender,
-        age,
+        hotelname,
+        description,
         Email,
         ContactNum,
         Address,
@@ -34,10 +32,10 @@ module.exports = router;
 // Get all employees
 router.get("/", async (req, res) => {
     try {
-        const users = await user.find();
-        res.status(200).json(users);
+        const hotels = await hotel.find();
+        res.status(200).json(hotels);
     } catch (err) {
-        console.error("Error fetching Users:", err);
+        console.error("Error fetching hotel:", err);
         res.status(500).json({ error: err.message });
     }
 });
@@ -76,7 +74,7 @@ router.delete("/delete/:id", async (req, res) => {
     const uId = req.params.id;
 
     try {
-        const deleted = await user.findByIdAndDelete(uId);
+        const deleted = await hotel.findByIdAndDelete(uId);
         if (!deleted) {
             return res.status(404).json({ error: "User not found" });
         }

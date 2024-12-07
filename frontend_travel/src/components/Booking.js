@@ -9,10 +9,12 @@ import bus from "../assets/bus.jpg";
 import train from "../assets/train.jpg";
 import tuktuk from "../assets/tuktuk.jpg";
 import domesticFlight from "../assets/domesticFlight.jpg";
-import Header from 'C:/Users/rashm/OneDrive/Desktop/Travel_SriLanka/frontend_travel/src/components/header';
+import Header from "../components/header";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 
 const Booking = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const navigate = useNavigate(); // Initialize the useNavigate hook
 
   const slides = [
     {
@@ -20,16 +22,17 @@ const Booking = () => {
       title: "Book Your Hotel",
       description: "Find the best hotels at the best prices.",
       buttonText: "Hotel Booking",
+      href: "/hotelbooking",
     },
     {
       image: car,
       title: "Rent a Car",
       description: "Explore your destination with convenient car rentals.",
-      buttonText: " Car Rent",
+      buttonText: "Car Rent",
     },
     {
       image: trip,
-      title: "adventurous task.",
+      title: "Adventurous Task",
       description: "Thrilling hikes, wildlife, water sports adventures.",
       buttonText: "Booking Tasks",
     },
@@ -58,31 +61,30 @@ const Booking = () => {
       image: bus,
       title: "Bus Services",
       description:
-        "Bus services in Sri Lanka provide affordable travel across the country, with both public and private buses. They connect cities, towns, and rural areas, offering different levels of comfort, from ordinary to luxury services. Buses are essential for daily commuting and tourism.",
+        "Bus services in Sri Lanka provide affordable travel across the country, with both public and private buses.",
       website: "https://sltb.eseat.lk/",
     },
     {
       image: train,
       title: "Train Rides",
       description:
-        "Train rides in Sri Lanka are a scenic and affordable way to travel. The network connects major cities and tourist destinations, offering different comfort levels. Popular routes like Colombo to Kandy and Colombo to Ella offer beautiful views of the countryside and mountains.",
+        "Train rides in Sri Lanka are a scenic and affordable way to travel, connecting cities and tourist destinations.",
       website: "https://www.railway.gov.lk",
     },
     {
       image: tuktuk,
       title: "Tuk-Tuk Rentals",
       description:
-        "Tuk-tuk rentals in Sri Lanka offer a convenient and affordable way to travel short distances. Available for hire with or without a driver, they are commonly used for sightseeing or local trips. Fares are often negotiated, and tuk-tuks are ideal for crowded areas.",
+        "Tuk-tuk rentals in Sri Lanka offer a convenient and affordable way to travel short distances.",
       website: "https://tuktukrental.com/",
     },
     {
       image: domesticFlight,
       title: "Domestic Flights",
       description:
-        "Domestic flights in Sri Lanka offer quick travel between major cities and tourist destinations, with airlines like SriLankan Airlines and Cinnamon Air serving routes to places like Jaffna and Trincomalee. While pricier, they are convenient for reaching remote areas swiftly.",
+        "Domestic flights in Sri Lanka offer quick travel between major cities and tourist destinations.",
       website: "https://www.srilankan.com",
     },
-
   ];
 
   const handleNextSlide = useCallback(() => {
@@ -98,205 +100,129 @@ const Booking = () => {
     return () => clearInterval(interval);
   }, [handleNextSlide]);
 
-  const slideStyle = {
-    width: "100%",
-    height: "450px",
-    objectFit: "cover",
-    filter: "brightness(70%)",
-    transition: "transform 0.8s ease-in-out",
-  };
-
-  const containerStyle = {
-    position: "relative",
-    overflow: "hidden",
-    borderRadius: "15px",
-    boxShadow: "0 12px 30px rgba(0, 0, 0, 0.1)",
-  };
-
-  const textOverlayStyle = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    textAlign: "center",
-    color: "white",
-    zIndex: 1,
-  };
-
-  const headingStyle = {
-    fontSize: "2.5rem",
-    fontWeight: "bold",
-    animation: "fadeIn 1s",
-  };
-
-  const paragraphStyle = {
-    fontSize: "1.2rem",
-    margin: "10px 0",
-    animation: "fadeIn 1.5s",
-  };
-
-
-
-
-  const carouselButtonStyle = {
-    position: "absolute",
-    top: "50%",
-    padding: "15px",
-    backgroundColor: "rgba(0, 0, 0, 0.9)",
-    color: "white",
-    border: "none",
-    fontSize: "2.5rem",
-    cursor: "pointer",
-    borderRadius: "50%",
-    boxShadow: "0 2px 10px rgba(0, 0, 0, 0.3)",
-    transition: "transform 0.3s ease",
-  };
-
-  const carouselButtonHoverStyle = {
-    transform: "scale(1.2)",
-  };
-
-  const cardContainerStyle = {
-    display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "space-around",
-    marginTop: "20px",
-    padding: "20px",
-    backgroundColor: "#f9f9f9",
-    borderRadius: "15px",
-    boxShadow: "0 5px 15px rgba(0, 0, 0, 0.1)",
-  };
-
-  const cardStyle = {
-    width: "280px",
-    backgroundColor: "white",
-    borderRadius: "12px",
-    textAlign: "center",
-    padding: "20px",
-    marginBottom: "20px",
-    boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
-    transition: "transform 0.3s ease, box-shadow 0.3s ease",
-    cursor: "pointer",
-  };
-
-  const cardImageStyle = {
-    width: "100%",
-    height: "180px",
-    borderRadius: "10px 10px 0 0",
-    objectFit: "cover",
-    transition: "transform 0.3s ease",
-    boxShadow: "0 4px 10px rgba(0, 0, 0, 0.2)",
-  };
-
-  const cardTitleStyle = {
-    fontSize: "1.5rem",
-    margin: "15px 0",
-    color: "#333",
-  };
-
-  const cardDescriptionStyle = {
-    fontSize: "1rem",
-    color: "#777",
-  };
-
-  const cardButtonStyle = {
-    padding: "12px 25px",
-    fontSize: "1rem",
-    marginTop: "15px",
-    backgroundColor: "#4CAF50",
-    color: "white",
-    border: "none",
-    borderRadius: "5px",
-    cursor: "pointer",
-    transition: "background-color 0.3s ease",
-  };
-
-  const cardButtonHoverStyle = {
-    backgroundColor: "#45a049",
-  };
-
-  // Function to handle click on transport cards
   const handleTransportClick = (url) => {
     window.open(url, "_blank");
+  };
+
+  const handleCardMouseOver = (e) => {
+    e.currentTarget.style.transform = "rotateY(10deg)";
+    e.currentTarget.style.boxShadow = "0 6px 15px rgba(0, 0, 0, 0.2)";
+  };
+
+  const handleCardMouseOut = (e) => {
+    e.currentTarget.style.transform = "rotateY(0deg)";
+    e.currentTarget.style.boxShadow = "0 4px 12px rgba(0, 0, 0, 0.1)";
+  };
+  const handleCardButtonClick = (href) => {
+    if (href) {
+      navigate(href); // Navigate to the specified page
+    }
   };
 
   return (
     <div>
       <Header />
       <div style={{ width: "100%", maxWidth: "1200px", margin: "20px auto" }}>
-
         {/* Banner Section */}
-        <div style={containerStyle}>
-          <div
+        <div style={{ position: "relative", overflow: "hidden", borderRadius: "15px", boxShadow: "0 12px 30px rgba(0, 0, 0, 0.1)" }}>
+          <img
+            src={slides[currentSlide].image}
+            alt={slides[currentSlide].title}
             style={{
-              ...containerStyle,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
+              width: "100%",
+              height: "450px",
+              objectFit: "cover",
+              filter: "brightness(70%)",
               transition: "transform 0.8s ease-in-out",
             }}
-          >
-            <img
-              src={slides[currentSlide].image}
-              alt={slides[currentSlide].title}
-              style={slideStyle}
-            />
-            <div style={textOverlayStyle}>
-              <h2 style={headingStyle}>{slides[currentSlide].title}</h2>
-              <p style={paragraphStyle}>{slides[currentSlide].description}</p>
-            </div>
-
-            <button
-              onClick={handlePrevSlide}
-              style={{
-                ...carouselButtonStyle,
-                left: "20px",
-              }}
-              onMouseOver={(e) => (e.target.style.transform = carouselButtonHoverStyle.transform)}
-              onMouseOut={(e) => (e.target.style.transform = carouselButtonHoverStyle.transform)}
-            >
-              &#8249;
-            </button>
-            <button
-              onClick={handleNextSlide}
-              style={{
-                ...carouselButtonStyle,
-                right: "20px",
-              }}
-              onMouseOver={(e) => (e.target.style.transform = carouselButtonHoverStyle.transform)}
-              onMouseOut={(e) => (e.target.style.transform = carouselButtonHoverStyle.transform)}
-            >
-              &#8250;
-            </button>
+          />
+          <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", textAlign: "center", color: "white", zIndex: 1 }}>
+            <h2 style={{ fontSize: "2.5rem", fontWeight: "bold", animation: "fadeIn 1s" }}>{slides[currentSlide].title}</h2>
+            <p style={{ fontSize: "1.2rem", margin: "10px 0", animation: "fadeIn 1.5s" }}>{slides[currentSlide].description}</p>
           </div>
+          <button
+            onClick={handlePrevSlide}
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "20px",
+              padding: "15px",
+              backgroundColor: "rgba(0, 0, 0, 0.9)",
+              color: "white",
+              border: "none",
+              fontSize: "2.5rem",
+              cursor: "pointer",
+              borderRadius: "50%",
+              boxShadow: "0 2px 10px rgba(0, 0, 0, 0.3)",
+            }}
+          >
+            &#8249;
+          </button>
+          <button
+            onClick={handleNextSlide}
+            style={{
+              position: "absolute",
+              top: "50%",
+              right: "20px",
+              padding: "15px",
+              backgroundColor: "rgba(0, 0, 0, 0.9)",
+              color: "white",
+              border: "none",
+              fontSize: "2.5rem",
+              cursor: "pointer",
+              borderRadius: "50%",
+              boxShadow: "0 2px 10px rgba(0, 0, 0, 0.3)",
+            }}
+          >
+            &#8250;
+          </button>
         </div>
 
         {/* Booking Cards Section */}
-        <div style={cardContainerStyle}>
+        <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-around", marginTop: "20px", padding: "20px", backgroundColor: "#f9f9f9", borderRadius: "15px", boxShadow: "0 5px 15px rgba(0, 0, 0, 0.1)" }}>
           {slides.map((slide, index) => (
             <div
               key={index}
-              style={cardStyle}
-              onMouseOver={(e) => {
-                e.target.style.transform = "rotateY(10deg)";
-                e.target.style.boxShadow = "0 6px 15px rgba(0, 0, 0, 0.2)";
+              style={{
+                width: "280px",
+                backgroundColor: "white",
+                borderRadius: "12px",
+                textAlign: "center",
+                padding: "20px",
+                marginBottom: "20px",
+                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+                transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                cursor: "pointer",
               }}
-              onMouseOut={(e) => {
-                e.target.style.transform = "rotateY(0deg)";
-                e.target.style.boxShadow = "0 4px 12px rgba(0, 0, 0, 0.1)";
-              }}
+              onMouseOver={handleCardMouseOver}
+              onMouseOut={handleCardMouseOut}
+              onClick={() => handleCardButtonClick(slide.href)}
             >
               <img
                 src={slide.image}
                 alt={slide.title}
-                style={cardImageStyle}
+                style={{
+                  width: "100%",
+                  height: "180px",
+                  borderRadius: "10px 10px 0 0",
+                  objectFit: "cover",
+                  boxShadow: "0 4px 10px rgba(0, 0, 0, 0.2)",
+                }}
               />
-              <h3 style={cardTitleStyle}>{slide.title}</h3>
-              <p style={cardDescriptionStyle}>{slide.description}</p>
+              <h3 style={{ fontSize: "1.5rem", margin: "15px 0", color: "#333" }}>{slide.title}</h3>
+              <p style={{ fontSize: "1rem", color: "#777" }}>{slide.description}</p>
               <button
-                style={cardButtonStyle}
-                onMouseOver={(e) => (e.target.style.backgroundColor = cardButtonHoverStyle.backgroundColor)}
-                onMouseOut={(e) => (e.target.style.backgroundColor = "#4CAF50")}
+                style={{
+                  padding: "12px 25px",
+                  fontSize: "1rem",
+                  marginTop: "15px",
+                  backgroundColor: "#4CAF50",
+                  color: "white",
+                  border: "none",
+                  borderRadius: "5px",
+                  cursor: "pointer",
+                  transition: "background-color 0.3s ease",
+                }}
               >
                 {slide.buttonText}
               </button>
@@ -305,29 +231,38 @@ const Booking = () => {
         </div>
 
         {/* Transport Cards Section */}
-        <div style={cardContainerStyle}>
+        <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-around", marginTop: "20px", padding: "20px", backgroundColor: "#f9f9f9", borderRadius: "15px", boxShadow: "0 5px 15px rgba(0, 0, 0, 0.1)" }}>
           {transportSlides.map((slide, index) => (
             <div
               key={index}
-              style={cardStyle}
+              style={{
+                width: "280px",
+                backgroundColor: "white",
+                borderRadius: "12px",
+                textAlign: "center",
+                padding: "20px",
+                marginBottom: "20px",
+                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+                transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                cursor: "pointer",
+              }}
               onClick={() => handleTransportClick(slide.website)}
-              onMouseEnter={(e) => (e.target.style.transform = "scale(1.05)")}
-              onMouseLeave={(e) => (e.target.style.transform = "scale(1)")}
+              onMouseOver={handleCardMouseOver}
+              onMouseOut={handleCardMouseOut}
             >
               <img
                 src={slide.image}
                 alt={slide.title}
-                style={cardImageStyle}
+                style={{
+                  width: "100%",
+                  height: "180px",
+                  borderRadius: "10px 10px 0 0",
+                  objectFit: "cover",
+                  boxShadow: "0 4px 10px rgba(0, 0, 0, 0.2)",
+                }}
               />
-              <h3 style={cardTitleStyle}>{slide.title}</h3>
-              <p style={cardDescriptionStyle}>{slide.description}</p>
-              {/*<button
-              style={cardButtonStyle}
-              onMouseOver={(e) => (e.target.style.backgroundColor = cardButtonHoverStyle.backgroundColor)}
-              onMouseOut={(e) => (e.target.style.backgroundColor = "#4CAF50")}
-            >
-              View More
-            </button>*/}
+              <h3 style={{ fontSize: "1.5rem", margin: "15px 0", color: "#333" }}>{slide.title}</h3>
+              <p style={{ fontSize: "1rem", color: "#777" }}>{slide.description}</p>
             </div>
           ))}
         </div>
