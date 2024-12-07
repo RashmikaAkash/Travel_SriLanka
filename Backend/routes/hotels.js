@@ -43,14 +43,12 @@ router.get("/", async (req, res) => {
 // Update an User
 router.put("/update/:id", async (req, res) => {
     const uId = req.params.id;
-    const { uid, Fname, Lname, Gender, age, Email, ContactNum, Address, City} = req.body; // Include DOB here
+    const { uid, hotelname,description,   Email,  ContactNum, Address, City } = req.body; // Include DOB here
 
     const updateUser = {
         uid,
-        Fname,
-        Lname,
-        Gender,
-        age,
+        hotelname,
+        description,
         Email,
         ContactNum,
         Address,
