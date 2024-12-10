@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Modal } from 'react-bootstrap';
-import Swal from 'sweetalert2';
+import Slider from 'react-slick';
 import { FaSearch, FaTimes } from 'react-icons/fa';
 import Header from '../components/header';
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
+import h1 from "../assets/h1.jpg";
+import h2 from "../assets/h2.jpg";
+import h3 from "../assets/h3.jpg";
 
 function StaffDetails() {
     const [users, setUsers] = useState([]);
-    const [modelState, setModelState] = useState(false);
-    const [selectedUser, setSelectedUser] = useState({});
+    const [setModelState] = useState(false);
+    const [setSelectedUser] = useState({});
     const [searchTerm, setSearchTerm] = useState("");
 
     useEffect(() => {
@@ -23,7 +27,6 @@ function StaffDetails() {
         fetchUsers();
     }, []);
 
-    // Filter users based on the search term (searching both hotel name and city)
     const filteredUsers = users.filter(user =>
         `${user.hotelname}`.toLowerCase().includes(searchTerm.toLowerCase()) ||
         `${user.city}`.toLowerCase().includes(searchTerm.toLowerCase())
@@ -38,53 +41,19 @@ function StaffDetails() {
         setModelState(true);
     };
 
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setSelectedUser({ ...selectedUser, [name]: value });
-    };
-
-    const updateHandler = async () => {
-        try {
-            if (!/^EM\d+$/.test(selectedUser.eid)) {
-                Swal.fire("Error!", "Employee ID should start with 'EM' followed by numbers.", "error");
-                return;
-            }
-
-            if (!/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/.test(selectedUser.Fname)) {
-                Swal.fire("Error!", "Please enter a valid first name.", "error");
-                return;
-            }
-
-            if (!/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/.test(selectedUser.Lname)) {
-                Swal.fire("Error!", "Please enter a valid last name.", "error");
-                return;
-            }
-
-            await axios.put(`http://localhost:8070/hotel/update/${selectedUser._id}`, selectedUser);
-            const updatedUsers = users.map(user =>
-                user._id === selectedUser._id ? selectedUser : user
-            );
-            setUsers(updatedUsers);
-            setModelState(false);
-            Swal.fire("Updated!", "Employee details have been updated.", "success");
-        } catch (error) {
-            console.error("Error updating employee:", error.message);
-        }
-    };
-
-    const deleteHandler = async (id) => {
-        try {
-            await axios.delete(`http://localhost:8070/hotel/delete/${id}`);
-            const updatedUsers = users.filter(user => user._id !== id);
-            setUsers(updatedUsers);
-            Swal.fire("Deleted!", "Employee has been deleted.", "success");
-        } catch (error) {
-            console.error("Error deleting employee:", error.message);
-        }
-    };
-
     const clearSearch = () => {
         setSearchTerm(""); // Clear the search input
+    };
+
+    const sliderSettings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 4000,
+        pauseOnHover: true
     };
 
     return (
@@ -92,15 +61,28 @@ function StaffDetails() {
             <Header />
             <div
                 style={{
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
                     minHeight: '100vh',
-                    backgroundRepeat: 'no-repeat',
-                    margin: 0,
-                    padding: '20px'
+                    padding: '20px',
+                    background: '#f9f9f9',
                 }}
             >
-                <div className="search-container" style={{ textAlign: 'center' }}>
+                {/* Image Slider Banner */}
+                <div style={{ marginBottom: '30px', maxWidth: '1200px', margin: 'auto' }}>
+                    <Slider {...sliderSettings}>
+                        <div>
+                            <img src={h1} alt="Slider 1" style={{ width: '100%', height: '400px', objectFit: 'cover', borderRadius: '10px' }} />
+                        </div>
+                        <div>
+                            <img src={h2} alt="Slider 2" style={{ width: '100%', height: '400px', objectFit: 'cover', borderRadius: '10px' }} />
+                        </div>
+                        <div>
+                            <img src={h3} alt="Slider 3" style={{ width: '100%', height: '400px', objectFit: 'cover', borderRadius: '10px' }} />
+                        </div>
+                    </Slider>
+                </div>
+
+                {/* Search Bar */}
+                <div className="search-container" style={{ textAlign: 'center' , marginTop: '60px'}}>
                     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', maxWidth: '400px', margin: 'auto' }}>
                         <span style={{ padding: '10px', background: '#f0f0f4', border: '1px solid #cccc', borderTopLeftRadius: '40px', borderBottomLeftRadius: '40px' }}>
                             <FaSearch />
@@ -137,48 +119,16 @@ function StaffDetails() {
                     </div>
                 </div>
 
+                {/* Employee Details */}
                 <div className="row row-cols-1 row-cols-md-3" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between' }}>
                     {filteredUsers.map(user => (
                         <EmployeeDetails
                             key={user._id}
                             user={user}
                             handleModelOpen={handleModelOpen}
-                            deleteHandler={deleteHandler}
                         />
                     ))}
                 </div>
-
-                <Modal show={modelState} onHide={() => setModelState(false)}>
-                    <Modal.Header closeButton>
-                        <Modal.Title>Update Employee</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <form>
-                            {Object.entries(selectedUser).map(([key, value]) =>
-                                key !== '_id' && key !== '__v' && (
-                                    <div className="mb-3" key={key}>
-                                        <label htmlFor={`update${key}`} className="form-label">
-                                            {key.charAt(0).toUpperCase() + key.slice(1)}
-                                        </label>
-                                        <input
-                                            type="text"
-                                            id={`update${key}`}
-                                            className="form-control"
-                                            name={key}
-                                            value={value}
-                                            onChange={handleInputChange}
-                                        />
-                                    </div>
-                                )
-                            )}
-                        </form>
-                    </Modal.Body>
-                    <Modal.Footer>
-                        <button className="btn btn-primary" onClick={updateHandler}>
-                            Update
-                        </button>
-                    </Modal.Footer>
-                </Modal>
             </div>
         </div>
     );
@@ -186,13 +136,13 @@ function StaffDetails() {
 
 function EmployeeDetails({ user, handleModelOpen, deleteHandler }) {
     return (
-        <div className="col-md-4 mb-3" style={{ marginTop: "30px", padding: "60px" }}>
+        <div className="col-md-4 mb-3" style={{ marginTop: "30px", padding: "45px" }}>
             <div
                 className="card"
                 style={{
-                    background: "linear-gradient(135deg, #e0f7fa, #80deea)", // Smooth gradient
-                    boxShadow: "0 6px 12px rgba(0, 0, 0, 0.1)", // Soft shadow for depth
-                    borderRadius: "20px", // Rounded corners for a modern touch
+                    background: "linear-gradient(135deg, #e0f7fa, #80deea)",
+                    boxShadow: "0 6px 12px rgba(0, 0, 0, 0.1)",
+                    borderRadius: "20px",
                     overflow: "hidden",
                     display: "flex",
                     flexDirection: "column",
@@ -202,19 +152,19 @@ function EmployeeDetails({ user, handleModelOpen, deleteHandler }) {
                 <div
                     className="card-header"
                     style={{
-                        backgroundColor: "#00695c", // Rich, modern green-blue color
+                        backgroundColor: "#00695c",
                         color: "#fff",
                         padding: "20px",
                         textAlign: "center",
-                        fontSize: "20px", // Larger header for emphasis
-                        fontWeight: "600", // Slightly bold for a modern feel
+                        fontSize: "20px",
+                        fontWeight: "600",
                         borderTopLeftRadius: "20px",
                         borderTopRightRadius: "20px",
                     }}
                 >
                     {user.hotelname}
                 </div>
-                <div className="card-body" style={{ padding: "25px", backgroundColor: '#f1f8e9', flexGrow: 1 }}>
+                <div className="card-body" style={{ padding: "20px", backgroundColor: '#f1f8e9', flexGrow: 1 }}>
                     {Object.entries(user).map(([key, value]) =>
                         key !== '_id' && key !== '__v' && key !== 'uid' && key !== 'hotelname' && value ? (
                             <p
@@ -245,7 +195,6 @@ function EmployeeDetails({ user, handleModelOpen, deleteHandler }) {
                 >
                     <button
                         className="btn btn-success"
-                        onClick={() => handleModelOpen(user)}
                         style={{
                             borderRadius: "10px",
                             backgroundColor: "#28a745",
@@ -257,14 +206,12 @@ function EmployeeDetails({ user, handleModelOpen, deleteHandler }) {
                             transition: "background-color 0.3s",
                         }}
                     >
-                        Booking
+                        Booking Hotel
                     </button>
-                    
                 </div>
             </div>
         </div>
     );
 }
-
 
 export default StaffDetails;

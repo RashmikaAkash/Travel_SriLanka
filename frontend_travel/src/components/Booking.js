@@ -29,6 +29,7 @@ const Booking = () => {
       title: "Rent a Car",
       description: "Explore your destination with convenient car rentals.",
       buttonText: "Car Rent",
+      href: "/rentcar",
     },
     {
       image: trip,

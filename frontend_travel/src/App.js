@@ -9,6 +9,7 @@ import explore from './components/explore';
 import naturalbeauty from './components/Naturalbeauty';
 import HotelBooking from './components/hotelbooking';
 import Addhotels from './components/Admin/Addhotels';
+import Rentcar from './components/RentCar';
 
 import 'leaflet/dist/leaflet.css';
 
@@ -29,6 +30,7 @@ function App() {
           <Route path="/naturalbeauty" exact Component={naturalbeauty} />
           <Route path="/hotelbooking" exact Component={HotelBooking} />
           <Route path="/addhotels" exact Component={Addhotels} />
+          <Route path="/rentcar" exact Component={Rentcar} />
         
         </Routes>
       </div>
