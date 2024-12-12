@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const hotel = require("../models/hotel"); // Ensure this path is correct
 
+
 // Import the User model
 // Add a new User
 router.post("/add", async (req, res) => {

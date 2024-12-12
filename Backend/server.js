@@ -20,8 +20,11 @@ mongoose.connect(URL)
     .catch((err) => console.error("Mongodb connection error:", err));
 
 const userRouter = require("./routes/hotels");
+const userroom = require("./routes/rooms");
 
 app.use("/hotel", userRouter);
+app.use("/room", userroom);
+
 
 app.listen(PORT, () => {
     console.log(`Server is up and running on port number: ${PORT}`);
