@@ -6,7 +6,7 @@ const rentcar = require("../models/rentcar"); // Ensure this path is correct
 // Import the User model
 // Add a new User
 router.post("/rent", async (req, res) => {
-    const { name, contactNumber, email, address, nic, passportNumber, rentDate } = req.body;
+    const { name, contactNumber, email, address, nic, passportNumber, rentDate, title, price, details } = req.body;
 
     const newRent = new rentcar({
         name, 
@@ -15,7 +15,10 @@ router.post("/rent", async (req, res) => {
         address, 
         nic, 
         passportNumber, 
-        rentDate
+        rentDate,
+        title,
+        price,
+        details
     });
 
     try {

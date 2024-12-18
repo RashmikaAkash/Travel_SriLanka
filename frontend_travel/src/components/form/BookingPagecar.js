@@ -4,7 +4,7 @@ import Header from '../header';
 import back from '../../assets/rentback.png';
 import axios from "axios";
 
-function BookingPage() {
+export default function BookingPage() {
     const location = useLocation();
     const { title, price, details } = location.state || {};
 
@@ -15,7 +15,9 @@ function BookingPage() {
         address: '',
         nic: '',
         passportNumber: '',
-        rentDate: ''
+        rentDate: '',
+        title: title || "",
+        price: price || "",
     });
 
     const [loading, setLoading] = useState(false);
@@ -35,7 +37,7 @@ function BookingPage() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const { name, contactNumber, email, address, nic, passportNumber, rentDate } = formData;
+        const { name, contactNumber, email, address, nic, passportNumber, rentDate, title, price } = formData;
 
         // Basic validation
         if (!name || !contactNumber || !email || !address || !nic || !passportNumber || !rentDate) {
@@ -52,6 +54,20 @@ function BookingPage() {
         // Contact number validation
         if (!validateContactNum(contactNumber)) {
             alert("Contact number should be exactly 10 digits.");
+            return;
+        }
+
+        // Rent Date validation
+        const currentDate = new Date();
+        const selectedRentDate = new Date(rentDate);
+
+        if (isNaN(selectedRentDate)) {
+            alert("Please select a valid Rent Date.");
+            return;
+        }
+
+        if (selectedRentDate < currentDate) {
+            alert("Rent date cannot be in the past. Please select a valid date.");
             return;
         }
 
@@ -83,7 +99,9 @@ function BookingPage() {
                 address: '',
                 nic: '',
                 passportNumber: '',
-                rentDate: ''
+                rentDate: '',
+                title: title || "",
+                price: price || "",
             });
         } catch (err) {
             console.error(err);
@@ -97,21 +115,21 @@ function BookingPage() {
 
     return (
         <div>
-            <Header />       
+            <Header />
             <div
-            style={{
-                backgroundImage: `url(${back})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                backgroundRepeat: 'no-repeat',
-                minHeight: '100vh',
-                Width: '100vh',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                alignItems: 'center',
-                padding: '20px',
-            }}
+                style={{
+                    backgroundImage: `url(${back})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat',
+                    minHeight: '100vh',
+                    width: '100vw',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    padding: '20px',
+                }}
             >
                 <div style={{
                     padding: '30px',
@@ -120,8 +138,8 @@ function BookingPage() {
                     backgroundColor: 'rgba(255, 255, 255, 0.9)',
                     borderRadius: '10px',
                     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-                    marginBottom: '70px',
-                    marginTop: '70px'
+                    marginBottom: '50px',
+                    marginTop: '50px'
                 }}>
                     <h1 style={{ fontSize: '2.5rem', fontWeight: 'bold', textAlign: 'center', color: '#333' }}>Booking Page</h1>
                     {title ? (
@@ -255,4 +273,3 @@ function BookingPage() {
     );
 }
 
-export default BookingPage;

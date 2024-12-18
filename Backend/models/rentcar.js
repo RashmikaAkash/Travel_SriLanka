@@ -33,6 +33,14 @@ const rentcar = new Schema({
         type: String, 
         required: true 
     }, 
+    title: { 
+        type: String, 
+        required: true 
+    }, 
+    price: { 
+        type: String, 
+        required: true 
+    },
 });
 
 // Create and export the model
