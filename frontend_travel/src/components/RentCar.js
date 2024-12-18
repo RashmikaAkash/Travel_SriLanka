@@ -1,11 +1,17 @@
 import React, { useEffect } from 'react';
 import * as THREE from 'three';
+import { useNavigate } from 'react-router-dom';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import Header from '../components/header'; // Adjust the path to your Header component
 import rentbanner from "../assets/rentbanner.jpg";
 
 const ModelContainer = ({ id, modelName, modelPath, initialPosition, initialScale, title, price, details }) => {
+    const navigate = useNavigate();
+    const handleBooking = () => {
+        navigate('/bookingcar', { state: { title, price, details } });
+    };
+    
     useEffect(() => {
         const container = document.getElementById(id);
 
@@ -99,7 +105,7 @@ const ModelContainer = ({ id, modelName, modelPath, initialPosition, initialScal
             style={{
                 width: '100%',
                 maxWidth: '350px',
-                height: '450px', // Set fixed height for consistency
+                height: '450px',
                 margin: '15px',
                 backgroundColor: '#fff',
                 borderRadius: '12px',
@@ -119,7 +125,7 @@ const ModelContainer = ({ id, modelName, modelPath, initialPosition, initialScal
             <div
                 id={id}
                 style={{
-                    height: '250px', // Ensure the model container has a consistent height
+                    height: '250px',
                     backgroundColor: '#f9f9f9',
                     borderBottom: '1px solid #ddd',
                     position: 'relative',
@@ -135,7 +141,7 @@ const ModelContainer = ({ id, modelName, modelPath, initialPosition, initialScal
                     style={{
                         width: '100%',
                         padding: '12px',
-                        backgroundColor: '#4CAF50', // Updated background color
+                        backgroundColor: '#4CAF50',
                         color: 'white',
                         border: 'none',
                         borderRadius: '8px',
@@ -144,9 +150,9 @@ const ModelContainer = ({ id, modelName, modelPath, initialPosition, initialScal
                         cursor: 'pointer',
                         transition: 'background-color 0.3s ease',
                     }}
-                    onClick={() => alert(`Booking ${title}`)}
-                    onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#45a049')} // Slight darkening on hover
-                    onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#4CAF50')} // Original color
+                    onClick={handleBooking}
+                    onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#45a049')}
+                    onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#4CAF50')}
                 >
                     Book Now
                 </button>
