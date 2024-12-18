@@ -138,7 +138,7 @@ function NaturalBeauty() {
                 </>
             ),
             image: Sigiriya,
-            href: "/sigiriya", // Update with actual link if necessary
+            href: "https://sigiriyatourism.com/", // Update with actual link if necessary
         },
         {
             title: "Nuwara Eliya - The Little England of Sri Lanka",
@@ -168,7 +168,7 @@ function NaturalBeauty() {
                 </>
             ),
             image: NuwaraEliya, // Replace with actual path
-            href: "/nuwara-eliya", // Update with actual link if necessary
+            href: "http://nuwaraeliyainfo.com/nuwara-eliya", // Update with actual link if necessary
         },
     ];
 
