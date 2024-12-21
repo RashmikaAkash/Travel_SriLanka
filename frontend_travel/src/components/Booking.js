@@ -36,6 +36,7 @@ const Booking = () => {
       title: "Adventurous Task",
       description: "Thrilling hikes, wildlife, water sports adventures.",
       buttonText: "Booking Tasks",
+      href: "/adventurous",
     },
     {
       image: cruise,
