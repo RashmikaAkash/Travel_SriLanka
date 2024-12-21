@@ -1,7 +1,14 @@
 import React from 'react';
 import Header from "../components/header";
 import adventurous from "../assets/adventurous.jpg";
-
+import mh from "../assets/mh.jpg";
+import sd from "../assets/sd.jpg";
+import sf from "../assets/sf.jpg";
+import st from "../assets/st.jpg";
+import ss from "../assets/ss.jpg";
+import kk from "../assets/kk.jpg";
+import hb from "../assets/hb.jpg";
+import ww from "../assets/ww.jpg";
 function AdventurousTask() {
 
 
@@ -59,19 +66,25 @@ function AdventurousTask() {
                 <section style={{
                     padding: '40px',
                     borderRadius: '15px',
-                    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
+                    boxShadow: '0 4px 8px rgba(0, 0, 0, 1)',
                 }}>
-                    <h2 style={{
-                        textAlign: 'center',
-                        marginBottom: '30px',
-                        color: '#01579b',
-                        textDecoration: 'underline',
-                        fontSize: '2em',
-                        fontWeight: 'bold',
-                        letterSpacing: '1px',
-                    }}>
+                    <h4
+                        style={{
+                            textAlign: 'center',
+                            marginBottom: '30px',
+                            color: 'rgba(169, 169, 169, 0.8)', // Changed color to black
+
+                            fontSize: '1.5em', // Increased font size slightly
+                            fontWeight: 'bold',
+                            letterSpacing: '1.9px', // Increased letter spacing
+                            textTransform: 'uppercase', // Added uppercase transformation
+                            padding: '10px', // Added padding for spacing
+                            borderBottom: '2px solid rgba(169, 169, 169, 0.8)', // Added bottom border for emphasis
+                        }}
+                    >
                         Available Adventures
-                    </h2>
+                    </h4>
+
                     <ul style={{
                         listStyleType: 'none',
                         padding: '0',
@@ -81,7 +94,16 @@ function AdventurousTask() {
                         flexWrap: 'wrap',
                         gap: '20px',
                     }}>
-                        {['Mountain Hiking', 'Scuba Diving', 'Skydiving', 'Safari Tour'].map((activity, index) => (
+                        {[
+                            { name: 'Mountain Hiking', image: mh, description: 'Conquer towering peaks and explore breathtaking landscapes.' },
+                            { name: 'Scuba Diving', image: sd, description: 'Dive deep into the ocean and experience underwater wonders.' },
+                            { name: 'Surfing', image: sf, description: 'Sri Lanka is perfect for surfing with warm waters and year-round waves.' },
+                            { name: 'Safari Tour', image: st, description: 'Embark on an unforgettable journey through the wild.' },
+                            { name: 'Ziplining', image: ss, description: 'Ziplining in Sri Lanka offers thrilling rides with stunning views.' },
+                            { name: 'Kayaking', image: kk, description: 'Kayaking in Sri Lanka lets you explore serene rivers and coasts.' },
+                            { name: 'Hot Air Balloon', image: hb, description: 'Hot air balloon rides in Sri Lanka offer breathtaking aerial views.' },
+                            { name: 'White water rafting', image: ww, description: 'White water rafting in Sri Lanka offers thrilling rapids and scenic views.' },
+                        ].map((activity, index) => (
                             <li
                                 key={index}
                                 style={{
@@ -103,13 +125,24 @@ function AdventurousTask() {
                                     e.currentTarget.style.boxShadow = '0 6px 15px rgba(0, 0, 0, 0.1)';
                                 }}
                             >
+                                <img
+                                    src={activity.image}
+                                    alt={activity.name}
+                                    style={{
+                                        width: '100%',
+                                        height: '150px',
+                                        objectFit: 'cover',
+                                        borderRadius: '10px',
+                                        marginBottom: '15px',
+                                    }}
+                                />
                                 <h3 style={{
                                     margin: '0 0 10px',
-                                    color: '#01579b',
+                                    color: '#45a049',
                                     fontSize: '1.5em',
                                     fontWeight: 'bold',
                                 }}>
-                                    {activity}
+                                    {activity.name}
                                 </h3>
                                 <p style={{
                                     margin: '0 0 20px',
@@ -117,17 +150,11 @@ function AdventurousTask() {
                                     lineHeight: '1.5',
                                     fontSize: '1em',
                                 }}>
-                                    {activity === 'Mountain Hiking'
-                                        ? 'Conquer towering peaks and explore breathtaking landscapes.'
-                                        : activity === 'Scuba Diving'
-                                            ? 'Dive deep into the ocean and experience underwater wonders.'
-                                            : activity === 'Skydiving'
-                                                ? 'Feel the adrenaline rush as you soar through the skies.'
-                                                : 'Embark on an unforgettable journey through the wild.'}
+                                    {activity.description}
                                 </p>
                                 <button
                                     style={{
-                                        backgroundColor: '#0288d1',
+                                        backgroundColor: "#4CAF50",
                                         color: '#fff',
                                         padding: '10px 20px',
                                         border: 'none',
@@ -138,11 +165,11 @@ function AdventurousTask() {
                                         transition: 'background-color 0.3s ease, transform 0.3s ease',
                                     }}
                                     onMouseOver={(e) => {
-                                        e.target.style.backgroundColor = '#0277bd';
+                                        e.target.style.backgroundColor = '#45a049';
                                         e.target.style.transform = 'scale(1.05)';
                                     }}
                                     onMouseOut={(e) => {
-                                        e.target.style.backgroundColor = '#0288d1';
+                                        e.target.style.backgroundColor = '#4CAF50';
                                         e.target.style.transform = 'scale(1)';
                                     }}
                                 >
@@ -151,6 +178,7 @@ function AdventurousTask() {
                             </li>
                         ))}
                     </ul>
+
                 </section>
 
 
