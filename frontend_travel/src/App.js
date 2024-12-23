@@ -12,7 +12,6 @@ import Addhotels from './components/Admin/Addhotels';
 import Rentcar from './components/RentCar';
 import BookingPage from './components/form/BookingPagecar';
 import Adventurous from './components/AdventurousTask';
-import AdventurousBookingPage from './components/form/Adventurousform';
 
 import 'leaflet/dist/leaflet.css';
 
@@ -36,7 +35,7 @@ function App() {
           <Route path="/rentcar" exact Component={Rentcar} />
           <Route path="/bookingcar" exact Component={BookingPage} />
           <Route path="/adventurous" exact Component={Adventurous} />
-          <Route path="/adventurousform" exact Component={AdventurousBookingPage} />
+          
         
         </Routes>
       </div>

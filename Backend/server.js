@@ -22,10 +22,12 @@ mongoose.connect(URL)
 const userRouter = require("./routes/hotels");
 const userroom = require("./routes/rooms");
 const userrentcar = require("./routes/rentcars");
+const usertask = require("./routes/AdventurousTasks");
 
 app.use("/hotel", userRouter);
 app.use("/room", userroom);
 app.use("/rent", userrentcar);
+app.use("/booktask", usertask);
 
 
 app.listen(PORT, () => {
