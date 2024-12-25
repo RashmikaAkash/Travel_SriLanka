@@ -1,15 +1,13 @@
 // StaffDetails.js
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Slider from "react-slick";
 import { FaSearch, FaTimes } from "react-icons/fa";
 import Header from "../components/header";
 import HotelBookingForm from "./form/HotelBookingForm"; // Import the booking form component
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import h1 from "../assets/h1.jpg";
-import h2 from "../assets/h2.jpg";
-import h3 from "../assets/h3.jpg";
+import Banner from './hotelbooking/bookingbanner';
+
 
 function StaffDetails() {
     const [users, setUsers] = useState([]);
@@ -41,16 +39,6 @@ function StaffDetails() {
         setSearchTerm(""); // Clear the search input
     };
 
-    const sliderSettings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 4000,
-        pauseOnHover: true,
-    };
 
     return (
         <div>
@@ -63,31 +51,8 @@ function StaffDetails() {
                 }}
             >
                 {/* Image Slider Banner */}
-                <div style={{ marginBottom: "30px", maxWidth: "1200px", margin: "auto" }}>
-                    <Slider {...sliderSettings}>
-                        <div>
-                            <img
-                                src={h1}
-                                alt="Slider 1"
-                                style={{ width: "100%", height: "400px", objectFit: "cover", borderRadius: "10px" }}
-                            />
-                        </div>
-                        <div>
-                            <img
-                                src={h2}
-                                alt="Slider 2"
-                                style={{ width: "100%", height: "400px", objectFit: "cover", borderRadius: "10px" }}
-                            />
-                        </div>
-                        <div>
-                            <img
-                                src={h3}
-                                alt="Slider 3"
-                                style={{ width: "100%", height: "400px", objectFit: "cover", borderRadius: "10px" }}
-                            />
-                        </div>
-                    </Slider>
-                </div>
+                
+                <Banner/>
 
                 {/* Search Bar */}
                 <div className="search-container" style={{ textAlign: "center", marginTop: "60px" }}>
