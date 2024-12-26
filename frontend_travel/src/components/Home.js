@@ -5,6 +5,7 @@ import Banner from './home/Banner';
 import Cards from './home/Cards';
 import Articlee from './home/Article';
 import Levy from './home/Levy';
+import AboutUs from './home/aboutUs';
 
 function Home() {
 
@@ -22,9 +23,12 @@ function Home() {
       
       {/* Top Values Section */}  
       <TopValues/>
+      <AboutUs/>
 
       {/* Article Box Section */}
       <Articlee />
+
+      
 
       {/* Tourism Development Levy Section */}
       <Levy />
