@@ -19,7 +19,7 @@ import q17 from "../assets/q17.jpg";
 import q18 from "../assets/q18.jpg";
 import q19 from "../assets/q19.jpg";
 import q20 from "../assets/q20.jpg";
-import Header from 'C:/Users/rashm/OneDrive/Desktop/Travel_SriLanka/frontend_travel/src/components/header';
+import Header from './header';
 
 const GalleryPage = () => {
   const [gallery, setGallery] = useState([]);

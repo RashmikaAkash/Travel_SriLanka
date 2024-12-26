@@ -34,7 +34,7 @@ import info from "../assets/Info.jpg";
 import info2 from "../assets/info2.jpg";
 import info3 from "../assets/info3.jpg";
 import info4 from "../assets/info4.jpg";
-import Header from 'C:/Users/rashm/OneDrive/Desktop/Travel_SriLanka/frontend_travel/src/components/header';
+import Header from './header';
 
 
 

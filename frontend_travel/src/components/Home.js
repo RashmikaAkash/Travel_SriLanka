@@ -1,5 +1,5 @@
 import React from "react";
-import Header from 'C:/Users/rashm/OneDrive/Desktop/Travel_SriLanka/frontend_travel/src/components/header';
+import Header from './header';
 import TopValues from './home/TopValues';
 import Banner from './home/Banner';
 import Cards from './home/Cards';
