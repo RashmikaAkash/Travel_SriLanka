@@ -3,7 +3,7 @@ import logo from "../assets/himg.png";
 
 function exploreheader() {
     return (
-        <nav class="navbar navbar-expand-lg" style={{ backgroundColor: 'rgba(169, 169, 169, 0.4)' }}> {/* Transparent gray */}
+        <nav class="navbar navbar-expand-lg" style={{ backgroundColor: '#ccb6ad' }}> {/* Transparent gray */}
             <div class="container-fluid">
                 <nav class="navbar" >
                     <div class="container-fluid" style={{ height: '100px' }}>

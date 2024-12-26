@@ -20,7 +20,7 @@ const ValueCard = ({ icon: Icon, title }) => (
   >
     <div style={{
       padding: '0.75rem',
-      backgroundColor: '#80E97A',
+      backgroundColor: '#ccb6ad',
       borderRadius: '9999px'
     }}>
       <Icon style={{ width: '1.5rem', height: '1.5rem', color: '#4b5563' }} />
@@ -56,7 +56,7 @@ const TopValues = () => {
         marginBottom: '3rem'
       }}>
         <p style={{
-          color: '#80E97A',
+          color: '#8d5a46',
           fontSize: '0.875rem',
           fontWeight: 500,
           marginBottom: '0.5rem'
@@ -64,7 +64,7 @@ const TopValues = () => {
         <h2 style={{
           fontSize: '1.875rem',
           fontWeight: 700,
-          color: '#4CAF50'
+          color: '#804831'
         }}>Our Top Values</h2>
       </div>
       

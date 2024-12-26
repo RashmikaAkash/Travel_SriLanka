@@ -9,22 +9,22 @@ const ExploreIsland = () => {
 
   const cards = [
     {
-      title: 'FESTIVE',
+      title: 'TRAVEL DOCUMENTS',
       image: img1,
       description:
-        'Lorem ipsum dolor sit amet consectetur. Et ut adipiscing non lacus molestie dui sed non dolor.',
+        'Ensure you carry a valid passport, visa, and travel insurance. Visitors are required to obtain an ETA (Electronic Travel Authorization) before entering Sri Lanka.',
     },
     {
-      title: 'THRILLS',
+      title: 'CULTURAL RESPECT',
       image: img2,
       description:
-        'Lorem ipsum dolor sit amet consectetur. Et ut adipiscing non lacus molestie dui sed non dolor.',
+        'When visiting temples or religious sites, dress modestly and remove footwear. Taking photographs inside some religious places might be restricted.',
     },
     {
-      title: 'WILD',
+      title: 'WILDLIFE PROTECTION',
       image: img3,
       description:
-        'Lorem ipsum dolor sit amet consectetur. Et ut adipiscing non lacus molestie dui sed non dolor.',
+        'Avoid activities that harm animals, such as riding elephants or purchasing products made from wildlife. These are regulated under strict laws in Sri Lanka.',
     },
   ];
 
@@ -98,14 +98,14 @@ const ExploreIsland = () => {
     title: {
       fontSize: '2.25rem',
       fontWeight: 'bold',
-      color: '#064E3B',
+      color: '#804831',
     },
     description: {
       color: '#4B5563',
       marginTop: '1rem',
     },
     button: {
-      backgroundColor: '#064E3B',
+      backgroundColor: '#804831',
       color: 'white',
       padding: '0.5rem 1.5rem',
       borderRadius: '0.375rem',
@@ -178,19 +178,18 @@ const ExploreIsland = () => {
 
       {/* Content Section */}
       <div style={styles.contentSection}>
-        <h2 style={styles.title}>EXPLORE THE ISLAND</h2>
+        <h2 style={styles.title}>EXPLORE THE LAWS</h2>
         <p style={styles.description}>
-          Each place, and each smile in Sri Lanka has a story to tell. We have so much to share
-          with you, so come along to our island in paradise!
+        Each regulation ensures the safety of travelers and the preservation of Sri Lanka’s rich heritage. Abiding by these guidelines ensures a worry-free journey through paradise!
         </p>
         <button
           style={styles.button}
           onMouseOver={(e) => {
-            e.target.style.backgroundColor = '#065F46';
+            e.target.style.backgroundColor = '#8d5a46';
             e.target.style.transform = 'scale(1.05)';
           }}
           onMouseOut={(e) => {
-            e.target.style.backgroundColor = '#064E3B';
+            e.target.style.backgroundColor = '#804831';
             e.target.style.transform = 'scale(1)';
           }}
         >

@@ -4,7 +4,7 @@ import logo from "../assets/himg.png";
 function Footer() {
     return (
         <div className="container-fluid" 
-             style={{ backgroundColor: 'rgba(169, 169, 169, 0.8)', color: '#343a40', padding: '40px 0' }}>
+             style={{ backgroundColor: '#b39183', color: '#343a40', padding: '40px 0' }}>
             <div className="row justify-content-center">
                 {/* Logo Section */}
                 <div className="col-12 col-sm-6 col-md-3 text-center mb-4">
@@ -62,7 +62,7 @@ function Footer() {
             {/* Footer Bottom */}
             <div className="row justify-content-center mt-4" style={{ borderTop: '1px solid #343a40', paddingTop: '10px' }}>
                 <div className="col-12 text-center">
-                    <p style={{ fontSize: '0.9rem', color: '#6c757d' }}>
+                    <p style={{ fontSize: '0.9rem', color: '#804831' }}>
                         &copy; {new Date().getFullYear()} Your Company. All Rights Reserved.
                     </p>
                 </div>
