@@ -6,6 +6,7 @@ import Cards from './home/Cards';
 import Articlee from './home/Article';
 import Levy from './home/Levy';
 import AboutUs from './home/aboutUs';
+import Travellaws from './home/travellaws';
 
 function Home() {
 
@@ -24,6 +25,7 @@ function Home() {
       {/* Top Values Section */}  
       <TopValues/>
       <AboutUs/>
+      <Travellaws/>
 
       {/* Article Box Section */}
       <Articlee />
