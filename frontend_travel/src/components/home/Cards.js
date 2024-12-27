@@ -14,6 +14,7 @@ function Cards(){
               padding: "20px",
               gap: "20px",
               marginTop: "110px",
+              marginBottom: "70px",
             }}
           >
             {[

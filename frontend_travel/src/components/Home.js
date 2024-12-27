@@ -7,6 +7,7 @@ import Levy from './home/Levy';
 import AboutUs from './home/aboutUs';
 import Travellaws from './home/travellaws';
 import TestimonialSection from './home/TestimonialSection';
+import See from './home/see';
 
 function Home() {
 
@@ -21,6 +22,8 @@ function Home() {
 
       {/* Cards Section */}
       <Cards/>
+
+      <See/>
       
       {/* Top Values Section */}  
       <TopValues/>
