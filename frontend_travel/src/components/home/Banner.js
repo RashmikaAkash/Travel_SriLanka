@@ -1,12 +1,12 @@
 import React from "react";
-import banner from "../../assets/banner.jpg";
+import banner from "../../assets/banner.png";
 
 function Banner(){
     return(
         <div
         style={{
           position: "relative",
-          height: "400px",
+          height: "600px",
           backgroundImage: `url(${banner})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
