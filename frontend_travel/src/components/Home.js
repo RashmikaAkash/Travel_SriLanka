@@ -3,10 +3,10 @@ import Header from './header';
 import TopValues from './home/TopValues';
 import Banner from './home/Banner';
 import Cards from './home/Cards';
-import Articlee from './home/Article';
 import Levy from './home/Levy';
 import AboutUs from './home/aboutUs';
 import Travellaws from './home/travellaws';
+import TestimonialSection from './home/TestimonialSection';
 
 function Home() {
 
@@ -28,7 +28,8 @@ function Home() {
       <Travellaws/>
 
       {/* Article Box Section */}
-      <Articlee />
+      <TestimonialSection />
+  
 
       
 
