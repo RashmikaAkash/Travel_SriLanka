@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Send, Users, Settings } from 'lucide-react';
+import { Send, Crosshair, Settings, Car, Bell, Target, Shield } from 'lucide-react';
+import police from "../../assets/police.jpg";
 
 const UXUISection = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -15,7 +16,7 @@ const UXUISection = () => {
     padding: '6rem 2rem',
     minHeight: '100vh',
     width: '100%',
-    background: 'linear-gradient(135deg, #804831, rgba(0, 0, 0, 0.7)), url("/api/placeholder/1920/1080")',
+    background: `linear-gradient(135deg, #804831, rgba(0, 0, 0, 0.7)), url(${police})`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundAttachment: 'fixed',
@@ -135,17 +136,16 @@ const UXUISection = () => {
     <div style={containerStyle}>
       <div style={glowEffectStyle} />
       <div style={headerStyle}>
-        <h1 style={titleStyle}>UX, UI DESIGN</h1>
+        <h1 style={titleStyle}>Sri Lankan security departments</h1>
         <p style={subtitleStyle}>
-          Lorem ipsum dolor sit amet, per natum scripserit ad.
-          Est ullum dictas legendos in, lus.
+        The Sri Lankan security department encompasses various agencies and organizations responsible for ensuring the safety and security of the country, its citizens, and national interests.
         </p>
       </div>
 
       <div style={featuresContainerStyle}>
-        <FeatureItem icon={Send} text="Seamless Communication" delay={200} />
-        <FeatureItem icon={Users} text="User-Centric Design" delay={400} />
-        <FeatureItem icon={Settings} text="Customizable Features" delay={600} />
+        <FeatureItem icon={Crosshair} text="Sri Lanka Army" delay={200} />
+        <FeatureItem icon={Target} text="Sri Lanka Intelligence Services" delay={400} />
+        <FeatureItem icon={Shield} text="Sri Lanka Police" delay={600} />
       </div>
     </div>
   );
