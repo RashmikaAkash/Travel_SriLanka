@@ -8,6 +8,7 @@ import AboutUs from './home/aboutUs';
 import Travellaws from './home/travellaws';
 import TestimonialSection from './home/TestimonialSection';
 import See from './home/see';
+import Round from './home/UXUISection';
 
 function Home() {
 
@@ -20,8 +21,11 @@ function Home() {
       {/* Banner Section */}
       <Banner />
 
+      
       {/* Cards Section */}
       <Cards/>
+
+     
 
       <See/>
       
@@ -35,7 +39,7 @@ function Home() {
   
 
       
-
+      <Round/>
       {/* Tourism Development Levy Section */}
       <Levy />
     </div>
